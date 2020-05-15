@@ -14,7 +14,7 @@ categories: []
 <pre class="r"><code>library(reticulate)
 Sys.setenv(RETICULATE_PYTHON=&quot;/usr/bin/python&quot;)
 use_python(&quot;/usr/bin/python&quot;)</code></pre>
-<p>##One of my favorite tools I learned in Python was being able to count the number of instances of each character in a string using a loop. Here’s a great example:</p>
+<p><em>One of my favorite tools I learned in Python was being able to count the number of instances of each character in a string using a loop. Here’s a great example:</em></p>
 <pre class="python"><code>import re
 sentence = &quot;I like Python, but I prefer R.&quot;
 
@@ -46,10 +46,8 @@ for c in counts:
 ## (&#39;.&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
 ## (&#39;p&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
 ## (&#39;,&#39;, &#39;appears&#39;, 1, &#39;times&#39;)</code></pre>
-<div id="i-can-then-call-the-string-back-into-r-and-add-more-text-by-running-the-following-code" class="section level2">
-<h2>I can then call the string back into R and add more text by running the following code:</h2>
+<p><em>I can then call the string back into R and add more text by running the following code:</em></p>
 <pre class="r"><code>py$sentence</code></pre>
 <pre><code>## [1] &quot;I like Python, but I prefer R.&quot;</code></pre>
 <pre class="r"><code>paste(py$sentence,&quot;But Python is still great!&quot;)</code></pre>
 <pre><code>## [1] &quot;I like Python, but I prefer R. But Python is still great!&quot;</code></pre>
-</div>
