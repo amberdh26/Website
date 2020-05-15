@@ -1,0 +1,35 @@
+---
+title: "Python Code"
+author: ''
+date: '2020-05-15'
+description: ''
+slug: python-code
+tags: []
+categories: []
+---
+![](/blog/2020-05-15-python-code_files/codingdog.jpeg)
+```{r}
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON="/usr/bin/python")
+use_python("/usr/bin/python")
+```
+##One of my favorite tools I learned in Python was being able to count the number of instances of each character in a string using a loop. Here's a great example:
+```{python}
+import re
+sentence = "I like Python, but I prefer R."
+
+counts = {}           
+for c in sentence:     
+    if c in counts:    
+        counts[c]+=1 
+    else:
+        counts[c]=1    
+for c in counts:
+    print(c, "appears", counts[c],"times")
+```
+## I can then call the string back into R and add more text by running the following code:
+```{r}
+py$sentence
+paste(py$sentence,"But Python is still great!")
+```
+

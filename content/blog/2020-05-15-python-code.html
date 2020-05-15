@@ -1,0 +1,55 @@
+---
+title: "Python Code"
+author: ''
+date: '2020-05-15'
+description: ''
+slug: python-code
+tags: []
+categories: []
+---
+
+
+
+<p><img src="/blog/2020-05-15-python-code_files/codingdog.jpeg" /></p>
+<pre class="r"><code>library(reticulate)
+Sys.setenv(RETICULATE_PYTHON=&quot;/usr/bin/python&quot;)
+use_python(&quot;/usr/bin/python&quot;)</code></pre>
+<p>##One of my favorite tools I learned in Python was being able to count the number of instances of each character in a string using a loop. Here’s a great example:</p>
+<pre class="python"><code>import re
+sentence = &quot;I like Python, but I prefer R.&quot;
+
+counts = {}           
+for c in sentence:     
+    if c in counts:    
+        counts[c]+=1 
+    else:
+        counts[c]=1    
+for c in counts:
+    print(c, &quot;appears&quot;, counts[c],&quot;times&quot;)</code></pre>
+<pre><code>## (&#39; &#39;, &#39;appears&#39;, 6, &#39;times&#39;)
+## (&#39;b&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;e&#39;, &#39;appears&#39;, 3, &#39;times&#39;)
+## (&#39;P&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;I&#39;, &#39;appears&#39;, 2, &#39;times&#39;)
+## (&#39;h&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;k&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;f&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;l&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;o&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;n&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;i&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;r&#39;, &#39;appears&#39;, 2, &#39;times&#39;)
+## (&#39;u&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;t&#39;, &#39;appears&#39;, 2, &#39;times&#39;)
+## (&#39;y&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;R&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;.&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;p&#39;, &#39;appears&#39;, 1, &#39;times&#39;)
+## (&#39;,&#39;, &#39;appears&#39;, 1, &#39;times&#39;)</code></pre>
+<div id="i-can-then-call-the-string-back-into-r-and-add-more-text-by-running-the-following-code" class="section level2">
+<h2>I can then call the string back into R and add more text by running the following code:</h2>
+<pre class="r"><code>py$sentence</code></pre>
+<pre><code>## [1] &quot;I like Python, but I prefer R.&quot;</code></pre>
+<pre class="r"><code>paste(py$sentence,&quot;But Python is still great!&quot;)</code></pre>
+<pre><code>## [1] &quot;I like Python, but I prefer R. But Python is still great!&quot;</code></pre>
+</div>

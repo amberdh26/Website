@@ -1,9 +1,0 @@
-#run to install the blogdown package; wait until finished
-install.packages("blogdown")
-#run to install hugo; wait until finished
-blogdown::install_hugo()
-
-blogdown::new_site(theme="nurlansu/hugo-sustain")
-blogdown::serve_site()
-servr::daemon_stop(3)
-install.packages("https://cran.r-project.org/bin/macosx/el-capitan/contrib/3.5/glmnet_2.0-18.tgz", repos=FALSE, type="source")
