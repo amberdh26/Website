@@ -1,0 +1,27 @@
+"2","Rendering content/project2.Rmd
+"
+"2","Quitting from lines 145-228 (project2.Rmd) 
+"
+"2","Error in library(glmnet) : there is no package called 'glmnet'
+Calls: local ... withCallingHandlers -> withVisible -> eval -> eval -> library
+In addition: Warning message:
+In doTryCatch(return(expr), name, parentenv, handler) :
+  ""add"" is not a graphical parameter
+"
+"2","Execution halted
+"
+"1","<"
+"1",""
+"1","simpleError"
+"1",""
+"1"," in "
+"1",""
+"1","render_page(f)"
+"1",""
+"1",": "
+"1",""
+"1","Failed to render 'content/project2.Rmd'"
+"1",""
+"1",">
+"
+"0","knitr::opts_chunk$set(echo = TRUE)"

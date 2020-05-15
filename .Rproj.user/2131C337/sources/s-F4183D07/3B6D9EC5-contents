@@ -1,0 +1,136 @@
+---
+title: "Project 1"
+author: "Amber Horbath"
+date: "3/15/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Amber Horbath AH47955
+
+## My two datasets came from my reasearch at the Behavioral Immunology Lab in the Psychiatry Department at Dell Medical School. The "CRTclin" dataset contains the clinical data of 82 depressed and healthy participants. This clinical data includes: race, gender, age, BMI, gender, condition (healthy or depressed), IDS score (Inventory of Depressive Symptomatology), CTQ score (childhood trauma), CHRT score (Concise Health Risk Tracking-Suicidal Ideation), BFI score (Brief Fatigue Inventory), BPI score (Brief Pain Inventory), PSS score (Perceived Stress Scale), and SRRS (Social Readjustment Rating Scale). This data was collected to look at the relationship between depression (quantified by the IDS total) and all of the other depression-related inventories. The "CRT data" is a dataset that contains the data from having these same participants undergo a Reaction Time Test that requires them to respond as quickly as possible to a stimulus on a screen. This dataset reports the average reaction time for 60 different trials of correct answers, the average reaction time of the errors made by the participants (if any), number of errors made, and the percentage of trials with an error. Overall, I expect that the reaction times were longer for the participants with higher IDS scores (depression severity). I joined the two datasets by the participant number, and I decided to do a full_join() because I wanted to look at the relationship beween the different reaction time variables and all of the clinical variables. I also removed a few clinical variables from the dataset that were not relevant because they were from old experiments. I removed the participants that did not have complete data, and in order to tidy the dataset, I used pivot_longer() on the 'Depressed' and 'Healthy'columns that reported the BMI for each participant. Since the participants were either healthy or depressed, the condition of each participant was made as a column and the BMI was put into its own column. To create another categorical variable, I made a column for "depression severity" with the mutate() function. This was based on the participant's IDs score and was categorized as high, low, or medium.
+
+```{R}
+library(tidyverse)
+library(readxl)
+CRT_full <- full_join(CRTclin_for_Project_1, CRT_for_Project_1, by=c("sample_number"="Participant ID"))
+CRT <- CRT_full %>% arrange(sample_number)
+names(CRT)[names(CRT) == "sample_number"] <- "participant" 
+names(CRT)[names(CRT) == "Correct # of Trials"] <- "num_correct"               
+names(CRT)[names(CRT) == "# of Errors"] <- "num_error" 
+names(CRT)[names(CRT) == "Total # of Trials"] <- "num_trials" 
+names(CRT)[names(CRT) == "% Errors"] <- "percent_error" 
+names(CRT)[names(CRT) == "Avg RT Correct"] <- "avg_rt_correct" 
+names(CRT)[names(CRT) == "Avg RT Errors"] <- "avg_rt_error" 
+CRT <- CRT%>% select(-mean_result, -cast_total, -lab_crp)
+CRT<-CRT[-c(15,16,26,51,52,58,62),] 
+CRT_new <- CRT %>% pivot_longer(c("Depressed","Healthy"), names_to="Condition", values_to="BMI") %>%
+  filter(BMI != "NA") %>% mutate(depression_severity = case_when(ids_total>45 ~ "high",
+                                            30<=ids_total & ids_total<=45 ~ "med",
+                                            ids_total<30 ~ "low"))
+
+CRT_new$age <- as.numeric(gsub("\\.",".",CRT_new$age))
+CRT_new$ids_total <- as.numeric(gsub("\\.",".",CRT_new$ids_total))
+CRT_new$ctq_total <- as.numeric(gsub("\\.",".",CRT_new$ctq_total))
+CRT_new$chrt_total <- as.numeric(gsub("\\.",".",CRT_new$chrt_total))
+CRT_new$bfi_total <- as.numeric(gsub("\\.",".",CRT_new$bfi_total))
+CRT_new$bpi_total <- as.numeric(gsub("\\.",".",CRT_new$bpi_total))
+CRT_new$pss_total <- as.numeric(gsub("\\.",".",CRT_new$pss_total))
+CRT_new$srrs_total <- as.numeric(gsub("\\.",".",CRT_new$srrs_total))
+CRT_new$BMI <- as.numeric(gsub("\\.",".",CRT_new$BMI))
+CRT_new$avg_rt_error <- as.numeric(gsub("\\.",".",CRT_new$avg_rt_error))
+CRT_new$Other_yn <- as.numeric(gsub("\\.",".",CRT_new$Other_yn))
+```
+
+
+
+
+```{R}
+
+#correlation of average reaction time and ids score
+cor_var <- CRT_new %>% select(avg_rt_correct, ids_total, age)
+cor(cor_var)
+
+#mean error rate grouped by gender and depression severity
+CRT_new %>% group_by(gender,depression_severity) %>% 
+  summarize(error_rate=mean(num_error/num_trials, na.rm=T))
+
+#mean reaction time (correct) grouped by gender and race
+CRT_new %>% group_by(race, gender) %>%
+  summarize(RT_correct = mean(avg_rt_correct, na.rm=T))
+
+#mean BMI grouped by depression severity
+CRT_new %>% group_by(depression_severity) %>% 
+  summarize(avg_BMI = mean(BMI, na.rm=T))
+
+#mean fatigue grouped by age and depression severity
+CRT_new %>% group_by(age,depression_severity) %>%
+  summarize(avg_bfi = mean(bfi_total, na.rm=T))
+
+#standard deviation of reaction time(correct) grouped by depression severity
+CRT_new %>% group_by(depression_severity) %>%
+  summarize(std_rt_correct = sd(avg_rt_correct, na.rm=T))
+
+#minimum ids score grouped by age
+CRT_new %>% group_by(age) %>%
+  summarize(min_ids = min(ids_total, na.rm=T))
+
+#maximum ctq score grouped by depression severity
+CRT_new %>% group_by(depression_severity) %>%
+  summarize(max_ctq = max(ctq_total, na.rm=T))
+
+#median BMI grouped by depression severity
+CRT_new %>% group_by(depression_severity) %>%
+  summarize(med_BMI = median(BMI, na.rm=T))
+
+#mean chrt score grouped by depression severity
+CRT_new %>% group_by(depression_severity) %>%
+  summarize(avg_chrt = mean(chrt_total, na.rm=T))
+
+```
+## The first summary statistic that I calculated was the correlation between the average reaction time, ids total, and age. In this correlation, average reaction time had the highest correlation (0.4404775) and age and ids total had the lowest(-0.0717306). Then I calculated the mean error rate (calculated by number of errors/number of trials) grouped by gender and depression severity. The highest error rate was for females with medium depression severity and the lowest was females with high depression severity. Next, I calculated the average reaction time grouped by gender and race, and the highest average reaction time was with African American females and the lowest was with 'Other' females. I calculated the average BMI grouped by depression severity and the 'medium' depression severity had the highest BMI and the 'low' depressin severity had the lowest. When I calculated the average fatigue score grouped by age and depression severity, the lowest score was with 'low' depression 20 year olds which was interesting, and the highest was with 'high' depression 47 year-olds. 
+
+## I also calculated the standard deviation of reaction time grouped by depression severity and found that participants with high depression severity had the highest reaction time, which is what I hypothesized. The low depression participants had the lowest reaction time. Then, I calculated the minimum ids score grouped by age and found that a 34 year old had the lowest score and a 48 year old had the highest score. I also looked at the maximum childhood trauma score grouped by depression severity and found that the medium depression group had the hist ctq score and the low depression group had the lowest. Next, I calculate the median BMI grouped by depression severity and found that high depression group had the highest BMI and the low depression group had the lowest, which was interesting as well. Lastly, I calculated the mean suicidal ideation score (chrt) grouped by depression severity and found that the high depression participants had the highest mean chrt score and that the low depression participants had the lowest, which was to be expected.
+
+
+```{R}
+ggplot(CRT_new, aes(depression_severity, avg_rt_correct, fill=depression_severity))+
+  geom_bar(stat="summary", fun.y="mean", position="dodge") + ggtitle("Depression Severity vs. Reaction Time") + ylab("Average Reaction Time (sec)") + xlab("Depression Severity") + theme(legend.background = element_rect(fill="pink", size = 1 , linetype = "solid")) + geom_errorbar(stat="summary", width =0.6, position=position_dodge(0.7))
+
+```
+## In this bar plot, it is shown that the high depression participants had the highest average reaction time and the low depression participants had the lowest average reaction time, which was to be expected since depression usually entails low motivation and energy. The high depression participants had the highest error bar which means that that group had the most variablility in terms of average reaction times. 
+
+```{R}
+ggplot(CRT_new, aes(chrt_total, avg_rt_correct))+
+geom_point(size=4,aes(color=BMI))+
+scale_color_gradient(low="purple", high="black") + scale_x_continuous(breaks = c(5,10,15,20,25,30,35,40,45,50,55,60)) + ggtitle("Suicidal Ideation vs. Reaction Time by BMI") +
+  xlab("Concise Health Risk Traction Score (Suicidal Ideation)") + ylab("Average Reaction Time (sec)")
+```
+## In this scatterplot, the relationship between the CHRT score which looks at suicidal ideation and average reaction time was analyzed along with the participant's BMI. This scatterplot looks pretty random and there is no clear correlation or trend. However, it looks as though the participants that have higher CHRT scores tend to have higher reaction times than those with lower CHRT score. The hparticipants with the highest BMIs are mostly in the center of th plot. Overall, I do not see any real trend in the scatterplot.
+```{R}
+library(cluster)
+pam_variables <- CRT_new %>% select(avg_rt_correct, ids_total, bfi_total)
+scale(pam_variables)
+sil_width <- vector()
+for(i in 2:10){
+  pam_fit <- 
+    pam(pam_variables, k=i)
+  sil_width[i] <- pam_fit$silinfo$avg.width
+}
+
+ggplot() +geom_line(aes(x=1:10,y=sil_width)) +scale_x_continuous(name="k",breaks=1:10)
+
+pam1 <- pam_variables %>% pam(k=3)
+pam1
+
+
+library(GGally)
+pam_variables %>% mutate(cluster=as.factor(pam1$clustering)) %>% 
+  ggpairs(columns = 2:4, aes(color=cluster))
+```
+
+##In this PAM analysis, cluster 3 has the highest overall correlation (0.528) and cluster 2 has the lowest correlation (0.474). However, between the ids total, fatigue inventory, and average reaction time, the correlation of each cluster is relatively similar to one another. There seems to be not a very significant corelation.

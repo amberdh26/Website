@@ -1,0 +1,3 @@
+"0","CRT_new$avg_rt_error <- as.numeric(gsub(""\\."",""."",CRT_new$avg_rt_error))
+"
+"2","NAs introduced by coercion"

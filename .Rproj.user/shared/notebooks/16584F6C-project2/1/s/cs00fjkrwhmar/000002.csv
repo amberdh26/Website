@@ -1,0 +1,25 @@
+"0","install.packages(""https://cran.r-project.org/bin/macosx/el-capitan/contrib/3.5/glmnet_2.0-18.tgz"", repos=FALSE, type=""source"")
+"
+"1","Warning in "
+"1",""
+"1","install.packages"
+"1",""
+"1"," :
+  "
+"1",""
+"1","unable to access index for repository FALSE/src/contrib:
+  cannot open URL 'FALSE/src/contrib/PACKAGES'"
+"1",""
+"1","
+"
+"1","Warning in "
+"1",""
+"1","install.packages"
+"1",""
+"1"," :
+  "
+"1",""
+"1","package ‘https://cran.r-project.org/bin/macosx/el-capitan/contrib/3.5/glmnet_2.0-18.tgz’ is not available (for R version 4.0.0)"
+"1",""
+"1","
+"

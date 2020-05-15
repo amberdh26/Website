@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Amber Horbath" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>Project 1</title>
+    <meta name="generator" content="Hugo 0.70.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/projects/">PROJECTS</a></li>
+        
+        <li><a href="/resume/">RESUME</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="/project1/">Project 1</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          May 13, 2020
+            &nbsp;&nbsp;
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+
+<div id="the-two-datasets-came-from-my-reasearch-at-the-behavioral-immunology-lab-in-the-psychiatry-department-at-dell-medical-school.-the-crtclin-dataset-contains-the-clinical-data-of-82-depressed-and-healthy-participants.-this-clinical-data-includes-race-gender-age-bmi-gender-condition-healthy-or-depressed-ids-score-inventory-of-depressive-symptomatology-ctq-score-childhood-trauma-chrt-score-concise-health-risk-tracking-suicidal-ideation-bfi-score-brief-fatigue-inventory-bpi-score-brief-pain-inventory-pss-score-perceived-stress-scale-and-srrs-social-readjustment-rating-scale.-this-data-was-collected-to-look-at-the-relationship-between-depression-quantified-by-the-ids-total-and-all-of-the-other-depression-related-inventories.-the-crt-data-is-a-dataset-that-contains-the-data-from-having-these-same-participants-undergo-a-reaction-time-test-that-requires-them-to-respond-as-quickly-as-possible-to-a-stimulus-on-a-screen.-this-dataset-reports-the-average-reaction-time-for-60-different-trials-of-correct-answers-the-average-reaction-time-of-the-errors-made-by-the-participants-if-any-number-of-errors-made-and-the-percentage-of-trials-with-an-error.-overall-i-expect-that-the-reaction-times-were-longer-for-the-participants-with-higher-ids-scores-depression-severity.-i-joined-the-two-datasets-by-the-participant-number-and-i-decided-to-do-a-full_join-because-i-wanted-to-look-at-the-relationship-beween-the-different-reaction-time-variables-and-all-of-the-clinical-variables.-i-also-removed-a-few-clinical-variables-from-the-dataset-that-were-not-relevant-because-they-were-from-old-experiments.-i-removed-the-participants-that-did-not-have-complete-data-and-in-order-to-tidy-the-dataset-i-used-pivot_longer-on-the-depressed-and-healthycolumns-that-reported-the-bmi-for-each-participant.-since-the-participants-were-either-healthy-or-depressed-the-condition-of-each-participant-was-made-as-a-column-and-the-bmi-was-put-into-its-own-column.-to-create-another-categorical-variable-i-made-a-column-for-depression-severity-with-the-mutate-function.-this-was-based-on-the-participants-ids-score-and-was-categorized-as-high-low-or-medium." class="section level2">
+<h2>The two datasets came from my reasearch at the Behavioral Immunology Lab in the Psychiatry Department at Dell Medical School. The “CRTclin” dataset contains the clinical data of 82 depressed and healthy participants. This clinical data includes: race, gender, age, BMI, gender, condition (healthy or depressed), IDS score (Inventory of Depressive Symptomatology), CTQ score (childhood trauma), CHRT score (Concise Health Risk Tracking-Suicidal Ideation), BFI score (Brief Fatigue Inventory), BPI score (Brief Pain Inventory), PSS score (Perceived Stress Scale), and SRRS (Social Readjustment Rating Scale). This data was collected to look at the relationship between depression (quantified by the IDS total) and all of the other depression-related inventories. The “CRT data” is a dataset that contains the data from having these same participants undergo a Reaction Time Test that requires them to respond as quickly as possible to a stimulus on a screen. This dataset reports the average reaction time for 60 different trials of correct answers, the average reaction time of the errors made by the participants (if any), number of errors made, and the percentage of trials with an error. Overall, I expect that the reaction times were longer for the participants with higher IDS scores (depression severity). I joined the two datasets by the participant number, and I decided to do a full_join() because I wanted to look at the relationship beween the different reaction time variables and all of the clinical variables. I also removed a few clinical variables from the dataset that were not relevant because they were from old experiments. I removed the participants that did not have complete data, and in order to tidy the dataset, I used pivot_longer() on the ‘Depressed’ and ’Healthy’columns that reported the BMI for each participant. Since the participants were either healthy or depressed, the condition of each participant was made as a column and the BMI was put into its own column. To create another categorical variable, I made a column for “depression severity” with the mutate() function. This was based on the participant’s IDs score and was categorized as high, low, or medium.</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.3     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readxl)
+CRTclin_for_Project_1 &lt;- read.csv(&quot;CRTclin_for_Project_1.csv&quot;)
+CRT_for_Project_1 &lt;- read.csv(&quot;CRT_for_Project_1.csv&quot;)
+CRT_full &lt;- full_join(CRTclin_for_Project_1, CRT_for_Project_1, by=c(&quot;sample_number&quot;=&quot;Participant.ID&quot;))
+CRT &lt;- CRT_full %&gt;% arrange(sample_number)
+names(CRT)[names(CRT) == &quot;sample_number&quot;] &lt;- &quot;participant&quot; 
+names(CRT)[names(CRT) == &quot;Correct # of Trials&quot;] &lt;- &quot;num_correct&quot;               
+names(CRT)[names(CRT) == &quot;# of Errors&quot;] &lt;- &quot;num_error&quot; 
+names(CRT)[names(CRT) == &quot;Total # of Trials&quot;] &lt;- &quot;num_trials&quot; 
+names(CRT)[names(CRT) == &quot;% Errors&quot;] &lt;- &quot;percent_error&quot; 
+names(CRT)[names(CRT) == &quot;Avg RT Correct&quot;] &lt;- &quot;avg_rt_correct&quot; 
+names(CRT)[names(CRT) == &quot;Avg RT Errors&quot;] &lt;- &quot;avg_rt_error&quot; 
+CRT &lt;- CRT%&gt;% select(-mean_result, -cast_total, -lab_crp)
+CRT&lt;-CRT[-c(15,16,26,51,52,58,62),] 
+CRT_new &lt;- CRT %&gt;% pivot_longer(c(&quot;Depressed&quot;,&quot;Healthy&quot;), names_to=&quot;Condition&quot;, values_to=&quot;BMI&quot;) %&gt;%
+  filter(BMI != &quot;NA&quot;) %&gt;% mutate(depression_severity = case_when(ids_total&gt;45 ~ &quot;high&quot;,
+                                            30&lt;=ids_total &amp; ids_total&lt;=45 ~ &quot;med&quot;,
+                                            ids_total&lt;30 ~ &quot;low&quot;))
+
+CRT_new$age &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$age))
+CRT_new$ids_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$ids_total))
+CRT_new$ctq_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$ctq_total))
+CRT_new$chrt_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$chrt_total))
+CRT_new$bfi_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$bfi_total))
+CRT_new$bpi_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$bpi_total))
+CRT_new$pss_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$pss_total))
+CRT_new$srrs_total &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$srrs_total))
+CRT_new$BMI &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$BMI))
+CRT_new$avg_rt_error &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$avg_rt_error))</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre class="r"><code>CRT_new$Other_yn &lt;- as.numeric(gsub(&quot;\\.&quot;,&quot;.&quot;,CRT_new$Other_yn))</code></pre>
+<pre class="r"><code>#correlation of average reaction time and ids score
+cor_var &lt;- CRT_new %&gt;% select(avg_rt_correct, ids_total, age)
+cor(cor_var)</code></pre>
+<pre><code>##                avg_rt_correct  ids_total        age
+## avg_rt_correct      1.0000000  0.1195006  0.4404775
+## ids_total           0.1195006  1.0000000 -0.0717306
+## age                 0.4404775 -0.0717306  1.0000000</code></pre>
+<pre class="r"><code>#mean error rate grouped by gender and depression severity
+CRT_new %&gt;% group_by(gender,depression_severity) %&gt;% 
+  summarize(error_rate=mean(num_error/num_trials, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   gender [2]
+##   gender depression_severity error_rate
+##   &lt;chr&gt;  &lt;chr&gt;                    &lt;dbl&gt;
+## 1 female high                   0      
+## 2 female low                    0.00926
+## 3 female med                    0.0658 
+## 4 male   high                   0.00926
+## 5 male   low                    0.0148 
+## 6 male   med                    0.0162</code></pre>
+<pre class="r"><code>#mean reaction time (correct) grouped by gender and race
+CRT_new %&gt;% group_by(race, gender) %&gt;%
+  summarize(RT_correct = mean(avg_rt_correct, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   race [3]
+##   race  gender RT_correct
+##   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
+## 1 AfA   female       851.
+## 2 AfA   male         591.
+## 3 Hisp  female       614.
+## 4 Hisp  male         572.
+## 5 O     female       551.
+## 6 O     male         552.</code></pre>
+<pre class="r"><code>#mean BMI grouped by depression severity
+CRT_new %&gt;% group_by(depression_severity) %&gt;% 
+  summarize(avg_BMI = mean(BMI, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   depression_severity avg_BMI
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 high                   30.2
+## 2 low                    28.2
+## 3 med                    32.4</code></pre>
+<pre class="r"><code>#mean fatigue grouped by age and depression severity
+CRT_new %&gt;% group_by(age,depression_severity) %&gt;%
+  summarize(avg_bfi = mean(bfi_total, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 57 x 3
+## # Groups:   age [38]
+##      age depression_severity avg_bfi
+##    &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+##  1    19 med                    42  
+##  2    20 low                     6  
+##  3    20 med                    68  
+##  4    21 low                    29.5
+##  5    21 med                    59  
+##  6    23 high                   65  
+##  7    23 med                    71  
+##  8    24 low                    24  
+##  9    24 med                    56.2
+## 10    25 high                   69  
+## # … with 47 more rows</code></pre>
+<pre class="r"><code>#standard deviation of reaction time(correct) grouped by depression severity
+CRT_new %&gt;% group_by(depression_severity) %&gt;%
+  summarize(std_rt_correct = sd(avg_rt_correct, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   depression_severity std_rt_correct
+##   &lt;chr&gt;                        &lt;dbl&gt;
+## 1 high                          201.
+## 2 low                           116.
+## 3 med                           186.</code></pre>
+<pre class="r"><code>#minimum ids score grouped by age
+CRT_new %&gt;% group_by(age) %&gt;%
+  summarize(min_ids = min(ids_total, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 38 x 2
+##      age min_ids
+##    &lt;dbl&gt;   &lt;dbl&gt;
+##  1    19      32
+##  2    20      29
+##  3    21      27
+##  4    23      43
+##  5    24      29
+##  6    25      36
+##  7    26      40
+##  8    27      32
+##  9    28      22
+## 10    29      45
+## # … with 28 more rows</code></pre>
+<pre class="r"><code>#maximum ctq score grouped by depression severity
+CRT_new %&gt;% group_by(depression_severity) %&gt;%
+  summarize(max_ctq = max(ctq_total, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   depression_severity max_ctq
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 high                     82
+## 2 low                      55
+## 3 med                      98</code></pre>
+<pre class="r"><code>#median BMI grouped by depression severity
+CRT_new %&gt;% group_by(depression_severity) %&gt;%
+  summarize(med_BMI = median(BMI, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   depression_severity med_BMI
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 high                   31.4
+## 2 low                    27.0
+## 3 med                    31.0</code></pre>
+<pre class="r"><code>#mean chrt score grouped by depression severity
+CRT_new %&gt;% group_by(depression_severity) %&gt;%
+  summarize(avg_chrt = mean(chrt_total, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   depression_severity avg_chrt
+##   &lt;chr&gt;                  &lt;dbl&gt;
+## 1 high                    30.8
+## 2 low                     21.9
+## 3 med                     22.1</code></pre>
+</div>
+<div id="the-first-summary-statistic-that-i-calculated-was-the-correlation-between-the-average-reaction-time-ids-total-and-age.-in-this-correlation-average-reaction-time-had-the-highest-correlation-0.4404775-and-age-and-ids-total-had-the-lowest-0.0717306.-then-i-calculated-the-mean-error-rate-calculated-by-number-of-errorsnumber-of-trials-grouped-by-gender-and-depression-severity.-the-highest-error-rate-was-for-females-with-medium-depression-severity-and-the-lowest-was-females-with-high-depression-severity.-next-i-calculated-the-average-reaction-time-grouped-by-gender-and-race-and-the-highest-average-reaction-time-was-with-african-american-females-and-the-lowest-was-with-other-females.-i-calculated-the-average-bmi-grouped-by-depression-severity-and-the-medium-depression-severity-had-the-highest-bmi-and-the-low-depressin-severity-had-the-lowest.-when-i-calculated-the-average-fatigue-score-grouped-by-age-and-depression-severity-the-lowest-score-was-with-low-depression-20-year-olds-which-was-interesting-and-the-highest-was-with-high-depression-47-year-olds." class="section level2">
+<h2>The first summary statistic that I calculated was the correlation between the average reaction time, ids total, and age. In this correlation, average reaction time had the highest correlation (0.4404775) and age and ids total had the lowest(-0.0717306). Then I calculated the mean error rate (calculated by number of errors/number of trials) grouped by gender and depression severity. The highest error rate was for females with medium depression severity and the lowest was females with high depression severity. Next, I calculated the average reaction time grouped by gender and race, and the highest average reaction time was with African American females and the lowest was with ‘Other’ females. I calculated the average BMI grouped by depression severity and the ‘medium’ depression severity had the highest BMI and the ‘low’ depressin severity had the lowest. When I calculated the average fatigue score grouped by age and depression severity, the lowest score was with ‘low’ depression 20 year olds which was interesting, and the highest was with ‘high’ depression 47 year-olds.</h2>
+</div>
+<div id="i-also-calculated-the-standard-deviation-of-reaction-time-grouped-by-depression-severity-and-found-that-participants-with-high-depression-severity-had-the-highest-reaction-time-which-is-what-i-hypothesized.-the-low-depression-participants-had-the-lowest-reaction-time.-then-i-calculated-the-minimum-ids-score-grouped-by-age-and-found-that-a-34-year-old-had-the-lowest-score-and-a-48-year-old-had-the-highest-score.-i-also-looked-at-the-maximum-childhood-trauma-score-grouped-by-depression-severity-and-found-that-the-medium-depression-group-had-the-hist-ctq-score-and-the-low-depression-group-had-the-lowest.-next-i-calculate-the-median-bmi-grouped-by-depression-severity-and-found-that-high-depression-group-had-the-highest-bmi-and-the-low-depression-group-had-the-lowest-which-was-interesting-as-well.-lastly-i-calculated-the-mean-suicidal-ideation-score-chrt-grouped-by-depression-severity-and-found-that-the-high-depression-participants-had-the-highest-mean-chrt-score-and-that-the-low-depression-participants-had-the-lowest-which-was-to-be-expected." class="section level2">
+<h2>I also calculated the standard deviation of reaction time grouped by depression severity and found that participants with high depression severity had the highest reaction time, which is what I hypothesized. The low depression participants had the lowest reaction time. Then, I calculated the minimum ids score grouped by age and found that a 34 year old had the lowest score and a 48 year old had the highest score. I also looked at the maximum childhood trauma score grouped by depression severity and found that the medium depression group had the hist ctq score and the low depression group had the lowest. Next, I calculate the median BMI grouped by depression severity and found that high depression group had the highest BMI and the low depression group had the lowest, which was interesting as well. Lastly, I calculated the mean suicidal ideation score (chrt) grouped by depression severity and found that the high depression participants had the highest mean chrt score and that the low depression participants had the lowest, which was to be expected.</h2>
+<pre class="r"><code>ggplot(CRT_new, aes(depression_severity, avg_rt_correct, fill=depression_severity))+
+  geom_bar(stat=&quot;summary&quot;, fun.y=&quot;mean&quot;, position=&quot;dodge&quot;) + ggtitle(&quot;Depression Severity vs. Reaction Time&quot;) + ylab(&quot;Average Reaction Time (sec)&quot;) + xlab(&quot;Depression Severity&quot;) + theme(legend.background = element_rect(fill=&quot;pink&quot;, size = 1 , linetype = &quot;solid&quot;)) + geom_errorbar(stat=&quot;summary&quot;, width =0.6, position=position_dodge(0.7))</code></pre>
+<pre><code>## Warning: Ignoring unknown parameters: fun.y</code></pre>
+<pre><code>## No summary function supplied, defaulting to `mean_se()`
+## No summary function supplied, defaulting to `mean_se()`</code></pre>
+<p><img src="/project1_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+## In this bar plot, it is shown that the high depression participants had the highest average reaction time and the low depression participants had the lowest average reaction time, which was to be expected since depression usually entails low motivation and energy. The high depression participants had the highest error bar which means that that group had the most variablility in terms of average reaction times.</p>
+<pre class="r"><code>ggplot(CRT_new, aes(chrt_total, avg_rt_correct))+
+geom_point(size=4,aes(color=BMI))+
+scale_color_gradient(low=&quot;purple&quot;, high=&quot;black&quot;) + scale_x_continuous(breaks = c(5,10,15,20,25,30,35,40,45,50,55,60)) + ggtitle(&quot;Suicidal Ideation vs. Reaction Time by BMI&quot;) +
+  xlab(&quot;Concise Health Risk Traction Score (Suicidal Ideation)&quot;) + ylab(&quot;Average Reaction Time (sec)&quot;)</code></pre>
+<p><img src="/project1_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+## In this scatterplot, the relationship between the CHRT score which looks at suicidal ideation and average reaction time was analyzed along with the participant’s BMI. This scatterplot looks pretty random and there is no clear correlation or trend. However, it looks as though the participants that have higher CHRT scores tend to have higher reaction times than those with lower CHRT score. The hparticipants with the highest BMIs are mostly in the center of th plot. Overall, I do not see any real trend in the scatterplot.</p>
+<pre class="r"><code>library(cluster)
+pam_variables &lt;- CRT_new %&gt;% select(avg_rt_correct, ids_total, bfi_total)
+scale(pam_variables)</code></pre>
+<pre><code>##       avg_rt_correct  ids_total   bfi_total
+##  [1,]   -0.050854654  0.4479418  0.74391044
+##  [2,]    0.070375267 -0.8408732  0.55519998
+##  [3,]    0.065012806 -0.3253472 -0.62424039
+##  [4,]   -0.282589577  1.2212308  0.74391044
+##  [5,]   -0.677017735 -0.1964657  0.22495668
+##  [6,]   -0.035533338 -1.6141621 -0.90730608
+##  [7,]   -0.851680750  0.1901788 -0.24681947
+##  [8,]   -0.569461764 -0.4542287  0.60237760
+##  [9,]   -0.223889780  0.3190603  0.08342383
+## [10,]    0.127064141  0.9634678  1.21568659
+## [11,]    1.333330591  1.4789937  1.78181797
+## [12,]   -0.626170113 -0.3253472 -2.36981215
+## [13,]    0.484589245 -1.2275177  0.08342383
+## [14,]    0.089431155 -2.1296881 -1.04883893
+## [15,]   -0.653748484 -1.6141621  1.02697613
+## [16,]    0.670587866 -0.1964657  1.21568659
+## [17,]   -1.063306443 -0.0675842  0.13060145
+## [18,]   -0.632856959 -0.5831102 -1.47343746
+## [19,]   -1.019363153 -0.4542287 -0.48270755
+## [20,]   -1.493835455 -0.8408732 -0.90730608
+## [21,]   -1.077026286  0.8345863 -0.15246424
+## [22,]    3.580058113  0.0612973  0.41366714
+## [23,]    0.256331262 -0.1964657 -1.89803600
+## [24,]   -0.509345070 -0.8408732 -2.18110169
+## [25,]   -0.303369113  0.1901788 -0.48270755
+## [26,]    0.055232259  2.1234012  1.21568659
+## [27,]   -0.708727389 -0.7119917  0.88544329
+## [28,]   -0.596389303  1.2212308  0.50802237
+## [29,]    0.492956346  1.2212308  0.31931191
+## [30,]   -0.097162686  0.0612973  1.16850898
+## [31,]   -0.313423727 -0.9697547 -0.01093140
+## [32,]   -0.968888826  1.4789937  0.69673283
+## [33,]   -0.209238771  1.7367567  0.74391044
+## [34,]   -0.784458471  1.6078752  0.50802237
+## [35,]   -0.889553942  1.4789937  0.79108806
+## [36,]    0.048324906 -0.4542287 -0.29399709
+## [37,]   -0.431277766 -0.4542287  0.03624622
+## [38,]   -0.092509485  0.3190603  0.36648952
+## [39,]    1.382933355  0.5768233  1.64028513
+## [40,]    1.655461284  1.6078752  0.93262090
+## [41,]    1.422082242 -0.1964657 -1.33190462
+## [42,]   -0.142639732 -0.9697547  0.27213429
+## [43,]    0.416133898  0.3190603  1.21568659
+## [44,]   -0.497088016  0.8345863  0.50802237
+## [45,]   -0.383614511 -0.7119917 -0.43552993
+## [46,]   -0.665143714  0.9634678  0.88544329
+## [47,]   -1.041760841 -0.1964657  0.13060145
+## [48,]   -0.748166101  0.1901788  0.64955521
+## [49,]   -0.979230715 -1.6141621 -1.75650315
+## [50,]   -0.356586344  0.4479418  0.17777906
+## [51,]    0.863698137  0.1901788  1.16850898
+## [52,]    2.723874834 -0.3253472 -0.34117470
+## [53,]    2.166075015  1.9945197  0.83826567
+## [54,]   -0.915551491 -0.1964657  0.36648952
+## [55,]    0.509619901 -0.8408732 -0.76577324
+## [56,]   -1.063256913  0.0612973  0.27213429
+## [57,]    0.512778300  1.8656382  0.83826567
+## [58,]   -0.885074405 -1.0986362 -1.23754939
+## [59,]    0.451205757 -1.8719251 -1.14319416
+## [60,]    3.209904666  0.3190603 -0.57706278
+## [61,]   -0.428504963  0.0612973 -0.19964186
+## [62,]   -0.954020332  0.1901788  0.31931191
+## [63,]   -0.675581361 -0.4542287 -1.61497031
+## [64,]   -0.734425606  2.2522827  0.60237760
+## [65,]    1.917168532  0.1901788 -2.46416738
+## [66,]    0.715721913 -0.1964657 -0.34117470
+## [67,]   -0.159540248 -0.3253472  0.83826567
+## [68,]    0.074205596  1.0923493 -1.47343746
+## [69,]   -1.020859130 -0.1964657  0.22495668
+## [70,]    1.165657927  0.7057048 -1.66214792
+## [71,]    1.015509019 -2.1296881 -1.85085838
+## [72,]   -1.329814587 -0.3253472 -0.29399709
+## [73,]   -0.008433758  0.4479418  1.31004182
+## [74,]    0.098917825 -1.2275177 -0.81295085
+## [75,]    0.437416571  0.5768233  0.60237760
+## [76,]    1.009093217 -0.0675842  1.21568659
+## [77,]    0.050553313 -1.7430436 -0.81295085
+## [78,]    0.693378326  0.1901788  0.03624622
+## [79,]    0.345584427 -0.3253472  0.46084475
+## [80,]   -1.240808122 -0.8408732 -1.33190462
+## [81,]   -1.009203042 -0.7119917  0.93262090
+## [82,]    0.290714960 -0.9697547  1.02697613
+## attr(,&quot;scaled:center&quot;)
+## avg_rt_correct      ids_total      bfi_total 
+##      589.31789       35.52439       52.23171 
+## attr(,&quot;scaled:scale&quot;)
+## avg_rt_correct      ids_total      bfi_total 
+##     174.049440       7.759066      21.196493</code></pre>
+<pre class="r"><code>sil_width &lt;- vector()
+for(i in 2:10){
+  pam_fit &lt;- 
+    pam(pam_variables, k=i)
+  sil_width[i] &lt;- pam_fit$silinfo$avg.width
+}
+
+ggplot() +geom_line(aes(x=1:10,y=sil_width)) +scale_x_continuous(name=&quot;k&quot;,breaks=1:10)</code></pre>
+<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="/project1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>pam1 &lt;- pam_variables %&gt;% pam(k=3)
+pam1</code></pre>
+<pre><code>## Medoids:
+##      ID avg_rt_correct ids_total bfi_total
+## [1,] 36       597.7288        32        46
+## [2,]  7       441.0833        37        47
+## [3,] 40       877.4500        48        72
+## Clustering vector:
+##  [1] 1 1 1 1 2 1 2 2 1 1 3 2 1 1 2 1 2 2 2 2 2 3 1 2 1 1 2 2 1 1 1 2 1 2 2 1 2 1
+## [39] 3 3 3 1 1 2 1 2 2 2 2 1 3 3 3 2 1 2 1 2 1 3 2 2 2 2 3 1 1 1 2 3 3 2 1 1 1 3
+## [77] 1 1 1 2 2 1
+## Objective function:
+##    build     swap 
+## 64.86462 60.47582 
+## 
+## Available components:
+##  [1] &quot;medoids&quot;    &quot;id.med&quot;     &quot;clustering&quot; &quot;objective&quot;  &quot;isolation&quot; 
+##  [6] &quot;clusinfo&quot;   &quot;silinfo&quot;    &quot;diss&quot;       &quot;call&quot;       &quot;data&quot;</code></pre>
+<pre class="r"><code>library(GGally)</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;GGally&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     nasa</code></pre>
+<pre class="r"><code>pam_variables %&gt;% mutate(cluster=as.factor(pam1$clustering)) %&gt;% 
+  ggpairs(columns = 2:4, aes(color=cluster))</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/project1_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>##In this PAM analysis, cluster 3 has the highest overall correlation (0.528) and cluster 2 has the lowest correlation (0.474). However, between the ids total, fatigue inventory, and average reaction time, the correlation of each cluster is relatively similar to one another. There seems to be not a very significant corelation.</p>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/docs.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+
+
+    
+  </body>
+</html>
