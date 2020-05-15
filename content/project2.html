@@ -20,9 +20,7 @@ head(CrohnD)</code></pre>
 ## 4 20908      1 25.71    165      c1   F  48     70      d2
 ## 5 20909      2 25.95    170      c1   F  67     75 placebo
 ## 6 20910      2 28.70    168      c1   F  54     81      d1</code></pre>
-</div>
-<div id="this-data-set-contains-the-results-of-117-patients-with-crohns-disease-that-were-given-a-treatment-placebo-drug-1-or-drug-2.-the-independent-variable-is-the-number-of-adverse-events-side-effects-while-on-the-given-treatment.-there-are-9-variables-patient-id-the-number-of-adverse-events-while-on-treatment-drug-nradve-bmi-weightkgheightm2-height-cm-the-country-that-the-patient-lives-in-c1-or-c2-the-sex-of-the-patient-the-age-of-the-patient-the-patients-weight-kg-and-the-given-treatment-for-each-patient-placebo-drug-1-or-drug-2.-there-are-117-observations-in-the-data-set." class="section level2">
-<h2>This data set contains the results of 117 patients with Crohn’s disease that were given a treatment (placebo, drug 1, or drug 2). The independent variable is the number of adverse events (side effects) while on the given treatment. There are 9 variables: patient ID, the number of adverse events while on treatment drug (nrAdvE), BMI (weight[kg]/height[m]^2), height (cm), the country that the patient lives in (c1 or c2), the sex of the patient, the age of the patient, the patient’s weight (kg), and the given treatment for each patient (placebo, drug 1, or drug 2). There are 117 observations in the data set.</h2>
+<p><em>This data set contains the results of 117 patients with Crohn’s disease that were given a treatment (placebo, drug 1, or drug 2). The independent variable is the number of adverse events (side effects) while on the given treatment. There are 9 variables: patient ID, the number of adverse events while on treatment drug (nrAdvE), BMI (weight[kg]/height[m]^2), height (cm), the country that the patient lives in (c1 or c2), the sex of the patient, the age of the patient, the patient’s weight (kg), and the given treatment for each patient (placebo, drug 1, or drug 2). There are 117 observations in the data set.</em></p>
 <pre class="r"><code>##ASSUMPTIONS
 
 #density plots for multivariate normality 
@@ -66,12 +64,12 @@ summary.aov(man1)</code></pre>
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>## post-hoc pair-wise t-tests
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ tibble  3.0.1     ✓ dplyr   0.8.5
 ## ✓ tidyr   1.0.3     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0
 ## ✓ purrr   0.3.4</code></pre>
-<pre><code>## ── Conflicts ───────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ## x dplyr::recode() masks car::recode()
@@ -131,7 +129,7 @@ hist(Fs, prob=T); abline(v = obs_F, col=&quot;red&quot;,add=T)</code></pre>
 ## not a graphical parameter</code></pre>
 <p><img src="/project2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>mean(Fs&gt;obs_F) #p-value is 0.0876</code></pre>
-<pre><code>## [1] 0.0862</code></pre>
+<pre><code>## [1] 0.086</code></pre>
 <p><em>H0 = There is no significant mean difference between the groups.</em>
 <em>HA = There is a significant mean difference between the groups.</em>
 <em>After performing the randomization test, we get a p-value of 0.0876 (p-value &lt; alpha(0.05) ) which means that we fail to reject the null-hypothesis and can conclude that there is no signifcant mean difference between the groups (number of adverse events and the country that the patient resides in). Not all of the 5000 F-statistics generated under the null hypothesis were bigger than our actual F statistic (2.941).</em></p>
@@ -242,7 +240,7 @@ coef(fit2)
 ## Estimated SEs
 samp_distn%&gt;%t%&gt;%as.data.frame%&gt;%summarize_all(sd)</code></pre>
 <pre><code>##   (Intercept)      age_c   weight_c age_c:weight_c
-## 1    0.247677 0.02527737 0.01719074    0.002454261</code></pre>
+## 1   0.2526112 0.02477044 0.01706804    0.002420003</code></pre>
 <pre class="r"><code>###COMPARE</code></pre>
 <p><em>Comparing the standard errors from the original model, the bootstrapped standard errors, and the robust standard errors, the original model had the smallest standard errors, the robust standard errors were the greatest, and the bootstrapped standard errors were in between.</em></p>
 <pre class="r"><code>library(glmnet)</code></pre>

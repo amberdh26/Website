@@ -21,7 +21,7 @@ head(CrohnD)
 ```
 
 
-## This data set contains the results of 117 patients with Crohn's disease that were given a treatment (placebo, drug 1, or drug 2). The independent variable is the number of adverse events (side effects) while on the given treatment. There are 9 variables: patient ID, the number of adverse events while on treatment drug (nrAdvE), BMI (weight[kg]/height[m]^2), height (cm), the country that the patient lives in (c1 or c2), the sex of the patient, the age of the patient, the patient's weight (kg), and the given treatment for each patient (placebo, drug 1, or drug 2). There are 117 observations in the data set.
+*This data set contains the results of 117 patients with Crohn's disease that were given a treatment (placebo, drug 1, or drug 2). The independent variable is the number of adverse events (side effects) while on the given treatment. There are 9 variables: patient ID, the number of adverse events while on treatment drug (nrAdvE), BMI (weight[kg]/height[m]^2), height (cm), the country that the patient lives in (c1 or c2), the sex of the patient, the age of the patient, the patient's weight (kg), and the given treatment for each patient (placebo, drug 1, or drug 2). There are 117 observations in the data set.*
 
 ```{r}
 
